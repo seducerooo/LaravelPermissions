@@ -16,6 +16,7 @@ class HomePostController extends Controller
     public function index()
     {
         //
+        return view('pages.blog-post.index');
     }
 
     /**

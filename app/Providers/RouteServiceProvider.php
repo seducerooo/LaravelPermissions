@@ -42,6 +42,9 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/home/home.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes/blog-post/blog_post.php'));
         });
     }
 
