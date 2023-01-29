@@ -13,7 +13,7 @@ class AuthenticationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function register()
     {
         //
         return view('pages.authentication.register');
@@ -24,6 +24,11 @@ class AuthenticationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function login()
+    {
+        //
+        return view('pages.authentication.login');
+    }
     public function create()
     {
         //
