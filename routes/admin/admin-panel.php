@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\AuthenticationController;
+
+use App\Http\Controllers\AdminPanelController;
 use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/dashboard',[AuthenticationController::class ,'index'])->name('admin.dashboard');
+Route::get('/dashboard',[AdminPanelController::class ,'index'])->name('admin.dashboard');

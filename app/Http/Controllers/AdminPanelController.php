@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Authentication;
-use App\Http\Requests\StoreAuthenticationRequest;
-use App\Http\Requests\UpdateAuthenticationRequest;
+use App\Models\AdminPanel;
+use App\Http\Requests\StoreAdminPanelRequest;
+use App\Http\Requests\UpdateAdminPanelRequest;
 
-class AuthenticationController extends Controller
+class AdminPanelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class AuthenticationController extends Controller
     public function index()
     {
         //
-
+        return view('pages.admin-panel.index');
     }
 
     /**
@@ -32,10 +32,10 @@ class AuthenticationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreAuthenticationRequest  $request
+     * @param  \App\Http\Requests\StoreAdminPanelRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAuthenticationRequest $request)
+    public function store(StoreAdminPanelRequest $request)
     {
         //
     }
@@ -43,10 +43,10 @@ class AuthenticationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Authentication  $authentication
+     * @param  \App\Models\AdminPanel  $adminPanel
      * @return \Illuminate\Http\Response
      */
-    public function show(Authentication $authentication)
+    public function show(AdminPanel $adminPanel)
     {
         //
     }
@@ -54,10 +54,10 @@ class AuthenticationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Authentication  $authentication
+     * @param  \App\Models\AdminPanel  $adminPanel
      * @return \Illuminate\Http\Response
      */
-    public function edit(Authentication $authentication)
+    public function edit(AdminPanel $adminPanel)
     {
         //
     }
@@ -65,11 +65,11 @@ class AuthenticationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateAuthenticationRequest  $request
-     * @param  \App\Models\Authentication  $authentication
+     * @param  \App\Http\Requests\UpdateAdminPanelRequest  $request
+     * @param  \App\Models\AdminPanel  $adminPanel
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAuthenticationRequest $request, Authentication $authentication)
+    public function update(UpdateAdminPanelRequest $request, AdminPanel $adminPanel)
     {
         //
     }
@@ -77,10 +77,10 @@ class AuthenticationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Authentication  $authentication
+     * @param  \App\Models\AdminPanel  $adminPanel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Authentication $authentication)
+    public function destroy(AdminPanel $adminPanel)
     {
         //
     }
