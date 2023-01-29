@@ -16,6 +16,7 @@ class HomePanelController extends Controller
     public function index()
     {
         //
+        return view('pages.blog-home.index');
     }
 
     /**
