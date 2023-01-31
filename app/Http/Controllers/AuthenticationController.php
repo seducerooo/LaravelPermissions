@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoggedRequest;
 use App\Models\Authentication;
 use App\Http\Requests\StoreAuthenticationRequest;
 use App\Http\Requests\UpdateAuthenticationRequest;
+use Illuminate\Support\Facades\Hash;
 
 class AuthenticationController extends Controller
 {
@@ -43,6 +45,39 @@ class AuthenticationController extends Controller
     public function store(StoreAuthenticationRequest $request)
     {
         //
+        $user = new Authentication();
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $result =$user->save();
+        if ($result){
+            return to_route('home')->with('success','You Have Registered Successfully');
+        }
+        else{
+            return to_route('home')->with('fail',"You Haven't Registered Successfully");
+        }
+    }
+
+    public function logged(LoggedRequest $request){
+        $user = Authentication::query()->where('email',$request->email)->firstOrFail();
+
+//        dd(Hash::($user->password));
+
+        if ($user){
+            if(Hash::check($request->password,$user->password)){
+                $request->session()->put('loginId',$user->id);
+                return to_route('admin.dashboard')->with('successful','You Have logged successfully');
+            }else{
+                return to_route('home')->with('failed','password not matches');
+            }
+        }else{
+            return to_route('home')->with('failed','email is not registered');
+        }
+
+
+
+
     }
 
     /**
