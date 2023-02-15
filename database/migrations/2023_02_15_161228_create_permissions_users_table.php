@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('permission_user', function (Blueprint $table) {
-            $table->id();
+            $table->primary(['permission_id','user_id']);
+            $table->foreignId('permission_id');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }
