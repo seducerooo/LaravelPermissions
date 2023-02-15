@@ -11,10 +11,15 @@ class User extends Model
     protected $table ='users';
     protected $fillable =
         [
-            'first_name',
-            'last_name',
+            'name',
             'email',
             'password',
 
         ];
+    public function roles(){
+        return $this->belongsToMany(Role::class);
+    }
+    public function permissions(){
+        return $this->belongsToMany(Permission::class);
+    }
 }
