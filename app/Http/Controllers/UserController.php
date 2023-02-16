@@ -26,6 +26,7 @@ class UserController extends Controller
     public function create()
     {
         //
+        return view('pages.admin-panel.create_user');
     }
 
     /**
@@ -34,9 +35,18 @@ class UserController extends Controller
      * @param  \App\Http\Requests\StoreUserRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUserRequest $request)
+    public function store(StoreUserRequest $request,User $user)
     {
         //
+        $result = User::query()->create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => $request['password']
+        ]);
+        $result->save();
+        return to_route('admin.dashboard');
+
+
     }
 
     /**
