@@ -24,7 +24,7 @@ class AdminPanelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function RoleCreate()
     {
         //
     }
@@ -35,7 +35,7 @@ class AdminPanelController extends Controller
      * @param  \App\Http\Requests\StoreAdminPanelRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAdminPanelRequest $request)
+    public function RoleStore(StoreAdminPanelRequest $request)
     {
         //
     }

@@ -26,6 +26,8 @@ class RoleController extends Controller
     public function create()
     {
         //
+        return view('pages.admin-panel.create_role');
+
     }
 
     /**
@@ -37,6 +39,12 @@ class RoleController extends Controller
     public function store(StoreRoleRequest $request)
     {
         //
+        $recorde = Role::query()->create([
+            'name' => $request['name'],
+            'slug' => $request['slug']
+        ]);
+        $recorde->save();
+        return to_route('admin.dashboard');
     }
 
     /**

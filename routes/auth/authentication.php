@@ -24,6 +24,4 @@ Route::post('/login',[AuthenticationController::class,'logged'])->name('auth.log
 Route::get('/users/create',[UserController::class,'create'])->name('auth.user.create');
 Route::post('/users/create',[UserController::class,'store'])->name('auth.user.store');
 
-                                            /*      */
-                                         /* create role */
-                                            /*      */
+

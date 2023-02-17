@@ -26,6 +26,7 @@ class PermissionController extends Controller
     public function create()
     {
         //
+        return view('pages.admin-panel.create_permission');
     }
 
     /**
@@ -37,6 +38,12 @@ class PermissionController extends Controller
     public function store(StorePermissionRequest $request)
     {
         //
+        $permission =  Permission::query()->create([
+            'name' => $request['name'],
+            'slug' => $request['slug']
+        ]);
+        $permission->save();
+        return to_route('admin.dashboard');
     }
 
     /**
