@@ -8,7 +8,9 @@
 
 <!-- Custom scripts for all pages-->
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
-
+<!-- Page level custom scripts -->
+<script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
 </body>
 
 </html>

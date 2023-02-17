@@ -16,6 +16,8 @@ class PermissionController extends Controller
     public function index()
     {
         //
+        $permissions =  Permission::query()->get()->all();
+        return view('pages.admin-panel.permission_list',compact('permissions'));
     }
 
     /**

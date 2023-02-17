@@ -16,6 +16,8 @@ class UserController extends Controller
     public function index()
     {
         //
+        $users =  User::query()->get()->all();
+        return view('pages.admin-panel.user_list',compact('users'));
     }
 
     /**

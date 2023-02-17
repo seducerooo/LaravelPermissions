@@ -18,10 +18,19 @@ Route::post('/register',[AuthenticationController::class,'store'])->name('auth.s
 Route::get('/login',[AuthenticationController::class,'login'])->middleware('AlreadyLoggedIn')->name('auth.login');
 Route::post('/login',[AuthenticationController::class,'logged'])->name('auth.logged');
 
+
+
+                                          /*               */
+                                       /* list(display) users */
+                                          /*               */
+Route::get('/users',[UserController::class,'index'])->name('auth.user.list');
+
                                             /*      */
                                          /* create user */
                                             /*      */
 Route::get('/users/create',[UserController::class,'create'])->name('auth.user.create');
 Route::post('/users/create',[UserController::class,'store'])->name('auth.user.store');
+
+
 
 

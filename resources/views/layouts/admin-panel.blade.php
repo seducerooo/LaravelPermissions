@@ -44,7 +44,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Components:</h6>
                     <a class="collapse-item" href="{{ route('auth.user.create') }}">create</a>
-                    <a class="collapse-item" href="buttons.html">list</a>
+                    <a class="collapse-item" href="{{ route('auth.user.list') }}">list</a>
                 </div>
             </div>
         </li>
@@ -57,7 +57,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Components:</h6>
                     <a class="collapse-item" href="{{ route('admin.role.create') }}">create</a>
-                    <a class="collapse-item" href="buttons.html">list</a>
+                    <a class="collapse-item" href="{{route('admin.role.list')}}">list</a>
                 </div>
             </div>
         </li>
@@ -70,7 +70,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Components:</h6>
                     <a class="collapse-item" href="{{ route('admin.permission.create') }}">create</a>
-                    <a class="collapse-item" href="buttons.html">list</a>
+                    <a class="collapse-item" href="{{route('admin.permission.list')}}">list</a>
                 </div>
             </div>
         </li>
