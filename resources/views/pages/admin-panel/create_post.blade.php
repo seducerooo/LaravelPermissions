@@ -13,14 +13,17 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user" method="POST" action="{{ route('admin.permission.store') }}">
+                            <form class="user" method="POST" action="{{ route('admin.post.store') }}">
                                 @csrf
-                                <div class="form-group row">
+                                <div class="form-group ">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input name="name" type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Your Permission Name">
+                                        <label for="id" class="form-label">Enter Your Title</label>
+                                        <input name="title" type="text" class="form-control form-control-user" id="id" placeholder="Your Post title">
                                     </div>
+                                    </br></br>
                                     <div class="col-sm-6">
-                                        <input name="slug" type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Your Slug">
+                                        <label for="exampleFormControlTextarea1" class="form-label">Enter Your Content</label>
+                                        <textarea name="content" class="form-control form-control-user" id="exampleFormControlTextarea1" rows="3" placeholder="Your Content ... !"></textarea>
                                     </div>
                                 </div>
                                 <input type="submit" class="btn btn-primary btn-user btn-block" value="add">

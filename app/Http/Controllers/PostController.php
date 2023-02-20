@@ -26,6 +26,7 @@ class PostController extends Controller
     public function create()
     {
         //
+        return view('pages.admin-panel.create_post');
     }
 
     /**
@@ -34,9 +35,14 @@ class PostController extends Controller
      * @param  \App\Http\Requests\StorePostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePostRequest $request)
+    public function store($id,StorePostRequest $request)
     {
         //
+        Post::query()->create([
+            'user_id' => $id,
+            'title'=> $request['title'],
+            'content' => $request['content']
+        ]);
     }
 
     /**
