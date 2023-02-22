@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoggedRequest;
-use App\Http\Requests\StoreAuthenticationRequest;
 use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateAuthenticationRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AuthenticationController extends Controller
 {
@@ -47,12 +46,12 @@ class AuthenticationController extends Controller
     public function store(StoreUserRequest $request)
     {
         //
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $result =$user->save();
-        if ($result){
+         $user = User::query()->create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password'])
+        ]);
+        if ($user){
             return to_route('home')->with('success','You Have Registered Successfully');
         }
         else{
@@ -64,7 +63,7 @@ class AuthenticationController extends Controller
         $user = User::query()->where('email',$request->email)->firstOrFail();
 
 //        dd(Hash::($user->password));
-
+//var_dump($user);
         if ($user){
             if(Hash::check($request->password,$user->password)){
                 $request->session()->put('loginId',$user->id);
@@ -81,6 +80,13 @@ class AuthenticationController extends Controller
 
     }
 
+    public function logout(){
+        if (Session::has('loginId')){
+            Session::pull('loginId');
+            return redirect()->route('auth.login');
+        }
+
+    }
     /**
      * Display the specified resource.
      *
@@ -106,7 +112,7 @@ class AuthenticationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateAuthenticationRequest  $request
+     * @param  \App\Http\Requests\UpdateUserRequest  $request
      * @param  \App\Models\User  $authentication
      * @return \Illuminate\Http\Response
      */

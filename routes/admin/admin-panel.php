@@ -30,3 +30,4 @@ Route::get('/permissions',[PermissionController::class,'index'])->name('admin.pe
 
 Route::get('/post',[PostController::class,'create'])->name('admin.post.create');
 Route::post('/post',[PostController::class,'store'])->name('admin.post.store');
+Route::get('/debug',[AdminPanelController::class,'RoleCreate']);

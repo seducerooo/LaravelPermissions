@@ -1,7 +1,9 @@
 @extends('layouts.blog-home')
 @section('content')
 <body>
-
+<h2>@if(Session()->has('failed'))
+        <p class="alert alert-info">{{ session()->get('message') }}</p>
+    @endif</h2>
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">

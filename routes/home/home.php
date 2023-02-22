@@ -6,4 +6,4 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('',[HomePanelController::class ,'index'])->name('home');
+Route::get('/',[HomePanelController::class ,'index'])->name('home');

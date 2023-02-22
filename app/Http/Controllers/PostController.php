@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\User;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class PostController extends Controller
 {
@@ -35,14 +39,17 @@ class PostController extends Controller
      * @param  \App\Http\Requests\StorePostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($id,StorePostRequest $request)
+    public function store(StorePostRequest $request, User $user)
     {
         //
+   dd(Auth::user());
         Post::query()->create([
-            'user_id' => $id,
+
+            'user_id' =>  $user_id,
             'title'=> $request['title'],
             'content' => $request['content']
         ]);
+  //      return to_route('home');
     }
 
     /**

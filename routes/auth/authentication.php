@@ -18,7 +18,7 @@ Route::post('/register',[AuthenticationController::class,'store'])->name('auth.s
 Route::get('/login',[AuthenticationController::class,'login'])->middleware('AlreadyLoggedIn')->name('auth.login');
 Route::post('/login',[AuthenticationController::class,'logged'])->name('auth.logged');
 
-
+Route::get('/logout',[AuthenticationController::class,'logout'])->name('auth.logout');
 
                                           /*               */
                                        /* list(display) users */

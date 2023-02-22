@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\AdminPanel;
 use App\Http\Requests\StoreAdminPanelRequest;
 use App\Http\Requests\UpdateAdminPanelRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\LoggedRequest;
+use Illuminate\Support\Facades\Session;
 
 class AdminPanelController extends Controller
 {
@@ -24,9 +28,10 @@ class AdminPanelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function RoleCreate()
+    public function RoleCreate(LoggedRequest $request)
     {
         //
+       dd($user = User::query()->where('email',$request->email)->firstOrFail());
     }
 
     /**
