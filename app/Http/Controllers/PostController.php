@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AdminPanel;
-use App\Http\Requests\StoreAdminPanelRequest;
-use App\Http\Requests\UpdateAdminPanelRequest;
+use App\Models\Post;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Models\User;
+
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\LoggedRequest;
 use Illuminate\Support\Facades\Session;
 
-class AdminPanelController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,6 @@ class AdminPanelController extends Controller
     public function index()
     {
         //
-        return view('pages.admin-panel.dashboard');
     }
 
     /**
@@ -28,30 +27,38 @@ class AdminPanelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function RoleCreate(LoggedRequest $request)
+    public function create()
     {
         //
-       dd($user = User::query()->where('email',$request->email)->firstOrFail());
+        return view('pages.admin-panel.create_post');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreAdminPanelRequest  $request
+     * @param  \App\Http\Requests\StorePostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function RoleStore(StoreAdminPanelRequest $request)
+    public function store(StorePostRequest $request, User $user)
     {
         //
+   dd(Auth::user());
+        Post::query()->create([
+
+            'user_id' =>  $user_id,
+            'title'=> $request['title'],
+            'content' => $request['content']
+        ]);
+  //      return to_route('home');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\AdminPanel  $adminPanel
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(AdminPanel $adminPanel)
+    public function show(Post $post)
     {
         //
     }
@@ -59,10 +66,10 @@ class AdminPanelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\AdminPanel  $adminPanel
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(AdminPanel $adminPanel)
+    public function edit(Post $post)
     {
         //
     }
@@ -70,11 +77,11 @@ class AdminPanelController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateAdminPanelRequest  $request
-     * @param  \App\Models\AdminPanel  $adminPanel
+     * @param  \App\Http\Requests\UpdatePostRequest  $request
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAdminPanelRequest $request, AdminPanel $adminPanel)
+    public function update(UpdatePostRequest $request, Post $post)
     {
         //
     }
@@ -82,10 +89,10 @@ class AdminPanelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\AdminPanel  $adminPanel
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AdminPanel $adminPanel)
+    public function destroy(Post $post)
     {
         //
     }

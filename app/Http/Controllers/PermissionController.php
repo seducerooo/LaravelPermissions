@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
+use App\Models\Permission;
+use App\Http\Requests\StorePermissionRequest;
+use App\Http\Requests\UpdatePermissionRequest;
 
-class UserController extends Controller
+class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users =  User::query()->get()->all();
-        return view('pages.admin-panel.user_list',compact('users'));
+        $permissions =  Permission::query()->get()->all();
+        return view('pages.admin-panel.permission_list',compact('permissions'));
     }
 
     /**
@@ -28,36 +28,33 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('pages.admin-panel.create_user');
+        return view('pages.admin-panel.create_permission');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreUserRequest  $request
+     * @param  \App\Http\Requests\StorePermissionRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUserRequest $request,User $user)
+    public function store(StorePermissionRequest $request)
     {
         //
-        $result = User::query()->create([
+        $permission =  Permission::query()->create([
             'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => $request['password']
+            'slug' => $request['slug']
         ]);
-        $result->save();
+        $permission->save();
         return to_route('admin.dashboard');
-
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Permission $permission)
     {
         //
     }
@@ -65,10 +62,10 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Permission $permission)
     {
         //
     }
@@ -76,11 +73,11 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateUserRequest  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Http\Requests\UpdatePermissionRequest  $request
+     * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(UpdatePermissionRequest $request, Permission $permission)
     {
         //
     }
@@ -88,10 +85,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Permission $permission)
     {
         //
     }

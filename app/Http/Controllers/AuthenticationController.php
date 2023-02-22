@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoggedRequest;
-use App\Models\Authentication;
-use App\Http\Requests\StoreAuthenticationRequest;
-use App\Http\Requests\UpdateAuthenticationRequest;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AuthenticationController extends Controller
 {
@@ -39,19 +40,18 @@ class AuthenticationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreAuthenticationRequest  $request
+     * @param  \App\Http\Requests\StoreUserRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAuthenticationRequest $request)
+    public function store(StoreUserRequest $request)
     {
         //
-        $user = new Authentication();
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $result =$user->save();
-        if ($result){
+         $user = User::query()->create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password'])
+        ]);
+        if ($user){
             return to_route('home')->with('success','You Have Registered Successfully');
         }
         else{
@@ -60,10 +60,10 @@ class AuthenticationController extends Controller
     }
 
     public function logged(LoggedRequest $request){
-        $user = Authentication::query()->where('email',$request->email)->firstOrFail();
+        $user = User::query()->where('email',$request->email)->firstOrFail();
 
 //        dd(Hash::($user->password));
-
+//var_dump($user);
         if ($user){
             if(Hash::check($request->password,$user->password)){
                 $request->session()->put('loginId',$user->id);
@@ -80,13 +80,20 @@ class AuthenticationController extends Controller
 
     }
 
+    public function logout(){
+        if (Session::has('loginId')){
+            Session::pull('loginId');
+            return redirect()->route('auth.login');
+        }
+
+    }
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Authentication  $authentication
+     * @param  \App\Models\User  $authentication
      * @return \Illuminate\Http\Response
      */
-    public function show(Authentication $authentication)
+    public function show(User $authentication)
     {
         //
     }
@@ -94,10 +101,10 @@ class AuthenticationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Authentication  $authentication
+     * @param  \App\Models\User  $authentication
      * @return \Illuminate\Http\Response
      */
-    public function edit(Authentication $authentication)
+    public function edit(User $authentication)
     {
         //
     }
@@ -105,11 +112,11 @@ class AuthenticationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateAuthenticationRequest  $request
-     * @param  \App\Models\Authentication  $authentication
+     * @param  \App\Http\Requests\UpdateUserRequest  $request
+     * @param  \App\Models\User  $authentication
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAuthenticationRequest $request, Authentication $authentication)
+    public function update(UpdateUserRequest $request, User $authentication)
     {
         //
     }
@@ -117,10 +124,10 @@ class AuthenticationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Authentication  $authentication
+     * @param  \App\Models\User  $authentication
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Authentication $authentication)
+    public function destroy(User $authentication)
     {
         //
     }
