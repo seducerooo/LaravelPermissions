@@ -57,6 +57,8 @@ class PermissionController extends Controller
     public function show(Permission $permission)
     {
         //
+
+
     }
 
     /**
@@ -65,9 +67,12 @@ class PermissionController extends Controller
      * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function edit(Permission $permission)
+    public function edit($id)
     {
         //
+
+        return view('pages.admin-panel.update_permission',compact('id'));
+
     }
 
     /**
@@ -77,9 +82,12 @@ class PermissionController extends Controller
      * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePermissionRequest $request, Permission $permission)
+    public function update(UpdatePermissionRequest $request)
     {
         //
+
+
+
     }
 
     /**
@@ -88,8 +96,11 @@ class PermissionController extends Controller
      * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Permission $permission)
+    public function destroy($id)
     {
         //
+        $permission = Permission::findOrFail($id);
+        $permission->delete();
+        return  to_route('admin.dashboard');
     }
 }

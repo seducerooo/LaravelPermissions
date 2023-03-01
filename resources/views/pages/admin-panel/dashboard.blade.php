@@ -2,6 +2,6 @@
 @section('content')
     <h1 class="h3 mb-4 text-gray-800">Dashboard Page</h1>
     <h2>@if(Session()->has('successful'))
-            <p class="alert alert-info">{{ session()->get('message') }}</p>
+            <p class="alert alert-info">{{ session()->get('successful') }}</p>
         @endif</h2>
 @endsection
