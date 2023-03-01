@@ -21,6 +21,7 @@
                             <th>slug</th>
                             <th>Created_At</th>
                             <th>Updated_At</th>
+                            <th>action</th>
                         </tr>
                         </thead>
                         <tfoot>
@@ -30,6 +31,7 @@
                             <th>Slug</th>
                             <th>Created_At</th>
                             <th>Updated_At</th>
+                            <th>action</th>
                         </tr>
                         </tfoot>
                         <tbody>
@@ -40,6 +42,11 @@
                                 <td>{{ $permission['slug'] }}</td>
                                 <td>{{ $permission['created_at'] }}</td>
                                 <td>{{ $permission['updated_at'] }}</td>
+                                <th>
+                                    <a href="{{ route('admin.permission.edit',['id' => $permission->id ])  }}" class="btn btn-primary">Edit</a>
+                                    <a href="{{ route('admin.permission.destroy',['id' => $permission->id ])  }}" class="btn btn-danger">Delete</a>
+                                </th>
+
                             </tr>
                         @endforeach
                         </tbody>
