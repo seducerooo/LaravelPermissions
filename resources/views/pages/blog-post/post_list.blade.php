@@ -17,39 +17,37 @@
                         <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Password</th>
+                            <th>Title</th>
+                            <th>content</th>
                             <th>Created_At</th>
                             <th>Updated_At</th>
-                            <th>Action</th>
+                            <th>action</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
                             <th>Id</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Password</th>
+                            <th>Title</th>
+                            <th>Content</th>
                             <th>Created_At</th>
                             <th>Updated_At</th>
-                            <th>Action</th>
+                            <th>action</th>
                         </tr>
                         </tfoot>
                         <tbody>
-                        @foreach($users as $user)
-                        <tr>
-                            <td>{{ $user['id'] }}</td>
-                            <td>{{ $user['name'] }}</td>
-                            <td>{{ $user['email'] }}</td>
-                            <td>{{\Illuminate\Support\Str::limit( $user['password'],20 ) }}</td>
-                            <td>{{ $user['created_at'] }}</td>
-                            <td>{{ $user['updated_at'] }}</td>
-                            <th>
-                                <a href="{{ route('auth.user.edit',['id' => $user->id ])  }}" class="btn btn-primary">Edit</a>
-                                <a href="{{ route('auth.user.destroy',['id' => $user->id ])  }}" class="btn btn-danger">Delete</a>
-                            </th>
-                        </tr>
+                        @foreach($posts as $post)
+                            <tr>
+                                <td>{{ $post['id'] }}</td>
+                                <td>{{ $post['title'] }}</td>
+                                <td>{{ $post['content'] }}</td>
+                                <td>{{ $post['created_at'] }}</td>
+                                <td>{{ $post['updated_at'] }}</td>
+                                <th>
+                                    <a href="{{ route('admin.post.edit',['id' => $post->id ])  }}" class="btn btn-primary">Edit</a>
+                                    <a href="{{ route('admin.post.destroy',['id' => $post->id ])  }}" class="btn btn-danger">Delete</a>
+                                </th>
+
+                            </tr>
                         @endforeach
                         </tbody>
                     </table>

@@ -66,9 +66,11 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $role)
+    public function edit($id)
     {
         //
+        $role = Role::query()->where('id',$id)->get()->first();
+        return view('pages.admin-panel.update_role',compact('role'));
     }
 
     /**
@@ -78,9 +80,14 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRoleRequest $request, Role $role)
+    public function update(UpdateRoleRequest $request,$id)
     {
         //
+        $rupdate =  Role::query()->findOrFail($id);
+        $rupdate->name = $request['name'];
+        $rupdate->slug = $request['slug'];
+        $rupdate->save();
+        return to_route('admin.dashboard');
     }
 
     /**
@@ -89,8 +96,11 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy($id)
     {
         //
+        $role = Role::findOrFail($id);
+        $role->delete();
+        return to_route('admin.dashboard');
     }
 }

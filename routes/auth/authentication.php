@@ -30,6 +30,10 @@ Route::get('/users',[UserController::class,'index'])->name('auth.user.list');
                                             /*      */
 Route::get('/users/create',[UserController::class,'create'])->name('auth.user.create');
 Route::post('/users/create',[UserController::class,'store'])->name('auth.user.store');
+Route::get('/users/{id}/edit',[UserController::class,'edit'])->name('auth.user.edit');
+Route::patch('/users/{id}/update',[UserController::class,'update'])->name('auth.user.update');
+Route::get('/users/{id}/delete',[UserController::class,'destroy'])->name('auth.user.destroy');
+
 
 
 

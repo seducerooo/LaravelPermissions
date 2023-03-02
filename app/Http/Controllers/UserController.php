@@ -68,9 +68,11 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
         //
+        $user =  User::query()->where('id',$id)->get()->first();
+        return view('pages.admin-panel.update_user',compact('user','user'));
     }
 
     /**
@@ -80,10 +82,16 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(UpdateUserRequest $request,$id)
     {
         //
-    }
+        $user = User::query()->findOrFail($id);
+        $user->name = $request['name'];
+        $user->email = $request['email'];
+        $user->password = $request['password'];
+        $user->save();
+        return to_route('admin.dashboard');
+     }
 
     /**
      * Remove the specified resource from storage.
@@ -91,8 +99,12 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
         //
+        $user = User::query()->findOrFail($id);
+        $user->delete();
+        $user->save();
+        return to_route('admin.dashboard');
     }
 }

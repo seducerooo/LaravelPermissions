@@ -14,22 +14,25 @@
                                 <h1 class="h4 text-gray-900 mb-4">Update an Account!</h1>
                             </div>
 
-                            <form class="user" method="POST" action="{{ route('admin.permission.update',$permission->id) }}">
+                            <form class="user" method="POST" action="{{ route('auth.user.update',$user->id) }}">
                                 @csrf
 
                                 @method('patch')
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
 
-                                        <input name="name" type="text" class="form-control form-control-user"  placeholder="Your Permission Name" value="{{ $permission['name'] }}">
+                                        <input name="name" type="text" class="form-control form-control-user"  placeholder="Your Permission Name" value="{{ $user['name'] }}">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input name="slug" type="text" class="form-control form-control-user"  placeholder="Your Slug" value="{{ $permission['slug']}}">
+                                        <input name="email" type="text" class="form-control form-control-user"  placeholder="Your Slug" value="{{ $user['email']}}">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input name="password" type="text" class="form-control form-control-user"  placeholder="Your Slug" value="{{ $user['password']}}">
                                     </div>
 
                                 </div>
 
-                               <input type="submit" class="btn btn-primary btn-user btn-block"  placeholder="Your Slug" value="update">
+                                <input type="submit" class="btn btn-primary btn-user btn-block"  placeholder="Your Slug" value="update">
 
 
                             </form>

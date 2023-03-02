@@ -69,9 +69,9 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $permission =  Permission::query()->where('id',$id)->get()->first();
 
-        return view('pages.admin-panel.update_permission',compact('id'));
+        return view('pages.admin-panel.update_permission',compact('id','permission'));
 
     }
 
@@ -82,11 +82,17 @@ class PermissionController extends Controller
      * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePermissionRequest $request)
+    public function update($id,UpdatePermissionRequest $request)
     {
         //
 
+        $pUpdate = Permission::find($id);
 
+        $pUpdate->name = $request['name'];
+        $pUpdate->slug = $request['slug'];
+
+        $pUpdate->save();
+        return to_route('admin.dashboard');
 
     }
 
