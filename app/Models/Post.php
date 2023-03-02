@@ -13,6 +13,7 @@ class Post extends Model
                                                 /* Post Fill able Columns */
                                                    /*                  */
     protected $fillable = [
+        'user_id',
       'title',
       'content'
     ];

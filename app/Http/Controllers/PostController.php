@@ -31,7 +31,7 @@ class PostController extends Controller
     {
         //
   // dd($data = session()->all());
- $user_id = session()->getId('loginId');
+ $user_id = session()->get('loginId');
         Post::query()->create([
 
             'user_id' =>  $user_id,
