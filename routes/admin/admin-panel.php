@@ -15,12 +15,23 @@ Route::get('/dashboard',[AdminPanelController::class ,'index'])->name('admin.das
                                                 /* roles */
                                                    /* */
 
+         /*  */         /* */        /**/          /**/          /*  */         /*   */         /*   */
+      /* create */   /* store */  /* list */    /* edit */    /* update */   /* destroy */   /* attform */
+         /*  */         /* */        /**/          /**/          /*  */         /*   */         /*   */
 Route::get('/role',[RoleController::class ,'create'])->name('admin.role.create');
+
 Route::post('/role',[RoleController::class ,'store'])->name('admin.role.store');
+
 Route::get('/roles',[RoleController::class,'index'])->name('admin.role.list');
+
 Route::get('/roles/{id}/edit',[RoleController::class,'edit'])->name('admin.role.edit');
+
 Route::patch('/roles/{id}/update',[RoleController::class,'update'])->name('admin.role.update');
+
 Route::get('/role/{id}/delete', [RoleController::class,'destroy'])->name('admin.role.destroy');
+
+Route::get('role/{id}/modify',[RoleController::class,'modify'])->name('admin.role.modify');
+Route::get('role/{id}/attach',[RoleController::class,'attach'])->name('admin.role.attach');
 
                                                  /*       */
                                               /*  permissions */

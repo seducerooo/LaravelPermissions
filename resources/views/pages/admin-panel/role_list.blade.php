@@ -18,9 +18,8 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th>slug</th>
-                            <th>Created_At</th>
-                            <th>Updated_At</th>
+                            <th>Slug</th>
+                            <th>Action</th>
                             <th>action</th>
                         </tr>
                         </thead>
@@ -29,8 +28,7 @@
                             <th>Id</th>
                             <th>Name</th>
                             <th>Slug</th>
-                            <th>Created_At</th>
-                            <th>Updated_At</th>
+                            <th>action</th>
                             <th>action</th>
                         </tr>
                         </tfoot>
@@ -40,8 +38,10 @@
                                 <td>{{ $role['id'] }}</td>
                                 <td>{{ $role['name'] }}</td>
                                 <td>{{ $role['slug'] }}</td>
-                                <td>{{ $role['created_at'] }}</td>
-                                <td>{{ $role['updated_at'] }}</td>
+                                <th>
+                                    <a href="{{ route('admin.role.modify',['id' => $role->id]) }}" class="btn btn-primary">Attach</a>
+                                    <a href="#" class="btn btn-danger">Detach</a>
+                                </th>
                                 <th>
                                     <a href="{{ route('admin.role.edit',['id' => $role->id ])  }}" class="btn btn-primary">Edit</a>
                                     <a href="{{ route('admin.role.destroy',['id' => $role->id ])  }}" class="btn btn-danger">Delete</a>

@@ -19,8 +19,15 @@
 
                                 @method('patch')
                                 <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <select name="role_id" class="form-select" aria-label="Default select example">
+                                            <option selected>Choose Your Name</option>
+                                            @foreach($roles  as $role)
+                                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-
                                         <input name="name" type="text" class="form-control form-control-user"  placeholder="Your Permission Name" value="{{ $user['name'] }}">
                                     </div>
                                     <div class="col-sm-6">
@@ -29,12 +36,29 @@
                                     <div class="col-sm-6">
                                         <input name="password" type="text" class="form-control form-control-user"  placeholder="Your Slug" value="{{ $user['password']}}">
                                     </div>
-
                                 </div>
+
+
 
                                 <input type="submit" class="btn btn-primary btn-user btn-block"  placeholder="Your Slug" value="update">
 
-
+                            </form>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <form class="user" method="POST" action="{{ route('auth.user.role.update',$user->id) }}">
+                                @csrf
+                                @method('PUT')
+                                <div class="col-sm-6">
+                                    <select name="role_id" class="form-select" aria-label="Default select example">
+                                        <option selected>Choose the role</option>
+                                        @foreach($roles  as $role)
+                                            <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <input type="submit" class="btn btn-primary btn-user btn-block"  placeholder="Your Slug" value="update">
                             </form>
                         </div>
                     </div>

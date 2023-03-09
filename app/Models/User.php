@@ -26,23 +26,18 @@ class User extends Model
                                              /*             */
                                           /* role relationship */
                                              /*             */
-    public function roles(){
-        return $this->belongsToMany(Role::class);
+    public function role(){
+        return $this->belongsTo(Role::class);
     }
-                                           /*                   */
-                                        /* permission relationship */
-                                           /*                   */
-    public function permissions(){
-        return $this->belongsToMany(Permission::class);
+    public function hasRole(){
+
     }
+
                                               /*             */
                                            /* post relationship */
                                               /*             */
     public function posts(){
         return $this->hasMany(Post::class);
     }
-    public function getId()
-    {
-        return $this->id;
-    }
+
 }

@@ -22,7 +22,6 @@ class Role extends Model
         [
             'name',
             'slug',
-
         ];
 
                                                        /*                   */
@@ -37,6 +36,6 @@ class Role extends Model
                                                        /* User relationship */
                                                           /*             */
     public function users(){
-        return $this->belongsToMany(User::class);
+        return $this->hasMany(User::class);
     }
 }
