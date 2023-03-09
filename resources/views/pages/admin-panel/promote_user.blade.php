@@ -11,25 +11,33 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Attach an User!</h1>
                             </div>
-                            <form class="user" method="POST" action="{{ route('admin.role.store') }}">
+
+                            <form class="user" method="POST" action="{{ route('auth.user.attach',$user->id) }}">
                                 @csrf
+
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input name="name" type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Your Role Name">
+
+                                        <select name="" class="form-select" aria-label="Default select example">
+                                            <option selected>Choose Role Please </option>
+                                            @foreach($roles as $role)
+                                            <option value="{{ $role['id'] }}">{{ $role->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
-                                    <br>
-                                    <div class="col-sm-6">
-                                        <input name="slug" type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Your Slug">
-                                    </div>
+
+
                                 </div>
-                                <input type="submit" class="btn btn-primary btn-user btn-block" value="add">
+
+                                <input type="submit" class="btn btn-primary btn-user btn-block"  placeholder="Your Slug" value="attach">
+
 
                             </form>
-
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

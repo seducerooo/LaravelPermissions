@@ -19,9 +19,10 @@
                             <th>Id</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Password</th>
-                            <th>Created_At</th>
-                            <th>Updated_At</th>
+                            <th>Password
+                            <th>role</th>
+                            <th>Action</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tfoot>
@@ -30,8 +31,9 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Password</th>
-                            <th>Created_At</th>
-                            <th>Updated_At</th>
+                            <th>role</th>
+                            <th>Action</th>
+                            <th>Action</th>
                         </tr>
                         </tfoot>
                         <tbody>
@@ -40,9 +42,18 @@
                             <td>{{ $user['id'] }}</td>
                             <td>{{ $user['name'] }}</td>
                             <td>{{ $user['email'] }}</td>
-                            <td>{{ $user['password'] }}</td>
-                            <td>{{ $user['created_at'] }}</td>
-                            <td>{{ $user['updated_at'] }}</td>
+                            <td>{{\Illuminate\Support\Str::limit( $user['password'],20 ) }}</td>
+
+                            <td>{{ $user->role->name }}</td>
+
+                            <th>
+                                <a href="{{ route('auth.user.edit',['id' => $user->id ])  }}" class="btn btn-primary">Edit</a>
+                                <a href="{{ route('auth.user.destroy',['id' => $user->id ])  }}" class="btn btn-danger">Delete</a>
+                            </th>
+                            <th>
+                                <a href="{{ route('auth.user.modify',['id' => $user->id]) }}" class="btn btn-primary">Attach</a>
+                                <a href="{{ route('auth.user.detach',['id' => $user->id]) }}" class="btn btn-danger">Detach</a>
+                            </th>
                         </tr>
                         @endforeach
                         </tbody>

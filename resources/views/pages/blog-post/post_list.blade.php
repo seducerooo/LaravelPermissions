@@ -17,35 +17,36 @@
                         <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Name</th>
-                            <th>Slug</th>
-                            <th>Action</th>
+                            <th>Title</th>
+                            <th>content</th>
+                            <th>Created_At</th>
+                            <th>Updated_At</th>
                             <th>action</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
                             <th>Id</th>
-                            <th>Name</th>
-                            <th>Slug</th>
-                            <th>action</th>
+                            <th>Title</th>
+                            <th>Content</th>
+                            <th>Created_At</th>
+                            <th>Updated_At</th>
                             <th>action</th>
                         </tr>
                         </tfoot>
                         <tbody>
-                        @foreach($roles as $role)
+                        @foreach($posts as $post)
                             <tr>
-                                <td>{{ $role['id'] }}</td>
-                                <td>{{ $role['name'] }}</td>
-                                <td>{{ $role['slug'] }}</td>
+                                <td>{{ $post['id'] }}</td>
+                                <td>{{ $post['title'] }}</td>
+                                <td>{{ $post['content'] }}</td>
+                                <td>{{ $post['created_at'] }}</td>
+                                <td>{{ $post['updated_at'] }}</td>
                                 <th>
-                                    <a href="{{ route('admin.role.modify',['id' => $role->id]) }}" class="btn btn-primary">Attach</a>
-                                    <a href="#" class="btn btn-danger">Detach</a>
+                                    <a href="{{ route('admin.post.edit',['id' => $post->id ])  }}" class="btn btn-primary">Edit</a>
+                                    <a href="{{ route('admin.post.destroy',['id' => $post->id ])  }}" class="btn btn-danger">Delete</a>
                                 </th>
-                                <th>
-                                    <a href="{{ route('admin.role.edit',['id' => $role->id ])  }}" class="btn btn-primary">Edit</a>
-                                    <a href="{{ route('admin.role.destroy',['id' => $role->id ])  }}" class="btn btn-danger">Delete</a>
-                                </th>
+
                             </tr>
                         @endforeach
                         </tbody>

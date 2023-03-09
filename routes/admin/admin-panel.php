@@ -15,9 +15,23 @@ Route::get('/dashboard',[AdminPanelController::class ,'index'])->name('admin.das
                                                 /* roles */
                                                    /* */
 
+         /*  */         /* */        /**/          /**/          /*  */         /*   */         /*   */
+      /* create */   /* store */  /* list */    /* edit */    /* update */   /* destroy */   /* attform */
+         /*  */         /* */        /**/          /**/          /*  */         /*   */         /*   */
 Route::get('/role',[RoleController::class ,'create'])->name('admin.role.create');
+
 Route::post('/role',[RoleController::class ,'store'])->name('admin.role.store');
+
 Route::get('/roles',[RoleController::class,'index'])->name('admin.role.list');
+
+Route::get('/roles/{id}/edit',[RoleController::class,'edit'])->name('admin.role.edit');
+
+Route::patch('/roles/{id}/update',[RoleController::class,'update'])->name('admin.role.update');
+
+Route::get('/role/{id}/delete', [RoleController::class,'destroy'])->name('admin.role.destroy');
+
+Route::get('role/{id}/modify',[RoleController::class,'modify'])->name('admin.role.modify');
+Route::get('role/{id}/attach',[RoleController::class,'attach'])->name('admin.role.attach');
 
                                                  /*       */
                                               /*  permissions */
@@ -28,7 +42,7 @@ Route::post('/permission',[PermissionController::class ,'store'])->name('admin.p
 Route::get('/permissions',[PermissionController::class,'index'])->name('admin.permission.list');
 Route::get('/permissions/{id}/delete',[PermissionController::class,'destroy'])->name('admin.permission.destroy');
 Route::get('/permissions/{id}/edit',[PermissionController::class,'edit'])->name('admin.permission.edit');
-//Route::patch('/permissions/{id}/update',[PermissionController::class,'update'])->name('admin.permission.update');
+Route::patch('/permissions/{id}/update',[PermissionController::class,'update'])->name('admin.permission.update');
 
 
 
@@ -37,4 +51,8 @@ Route::get('/permissions/{id}/edit',[PermissionController::class,'edit'])->name(
                                                      /* */
 Route::get('/post',[PostController::class,'create'])->name('admin.post.create');
 Route::post('/post',[PostController::class,'store'])->name('admin.post.store');
+Route::get('/posts',[PostController::class,'index'])->name('admin.post.list');
+Route::get('/posts/{id}/edit',[PostController::class,'edit'])->name('admin.post.edit');
+Route::get('posts/{id}/delete',[PostController::class,'destroy'])->name('admin.post.destroy');
+Route::patch('/posts/{id}/update',[PostController::class,'update'])->name('admin.post.update');
 Route::get('/debug',[AdminPanelController::class,'RoleCreate']);

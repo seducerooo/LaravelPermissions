@@ -13,7 +13,7 @@ class UpdateRoleRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,9 @@ class UpdateRoleRequest extends FormRequest
     {
         return [
             //
+            'name' => 'required',
+            'slug' => 'required',
+            'role_id' => 'required'
         ];
     }
 }

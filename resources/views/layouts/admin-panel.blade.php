@@ -91,7 +91,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Components:</h6>
                     <a class="collapse-item" href="{{ route('admin.post.create') }}">create</a>
-                    <a class="collapse-item" href="{{ route('auth.user.list') }}">list</a>
+                    <a class="collapse-item" href="{{ route('admin.post.list') }}">list</a>
                 </div>
             </div>
         </li>

@@ -11,25 +11,28 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Update an Account!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Attach an Permission!</h1>
                             </div>
 
-                            <form class="user" method="POST" action="{{ route('admin.permission.update',$permission->id) }}">
+                            <form class="user" method="POST" action="{{ route('admin.role.attach',$role->id) }}">
                                 @csrf
 
                                 @method('patch')
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
 
-                                        <input name="name" type="text" class="form-control form-control-user"  placeholder="Your Permission Name" value="{{ $permission['name'] }}">
+                                        <select name="" class="form-select" aria-label="Default select example">
+                                            <option selected>Choose Permission Please </option>
+                                            @foreach($permissions as $permission)
+                                                <option value="{{ $permission['id'] }}">{{ $permission->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <input name="slug" type="text" class="form-control form-control-user"  placeholder="Your Slug" value="{{ $permission['slug']}}">
-                                    </div>
+
 
                                 </div>
 
-                               <input type="submit" class="btn btn-primary btn-user btn-block"  placeholder="Your Slug" value="update">
+                                <input type="submit" class="btn btn-primary btn-user btn-block"  placeholder="Your Slug" value="attach">
 
 
                             </form>
