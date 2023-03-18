@@ -34,7 +34,7 @@ Route::get('/users',[UserController::class,'index'])->name('auth.user.list');
 
 Route::get('/users/create',[UserController::class,'create'])->name('auth.user.create');
 
-Route::post('/users/{id}/create',[UserController::class,'store'])->name('auth.user.store');
+Route::post('/users/create',[UserController::class,'store'])->name('auth.user.store');
 
 Route::get('/users/{id}/edit',[UserController::class,'edit'])->name('auth.user.edit');
 

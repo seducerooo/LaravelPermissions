@@ -14,17 +14,16 @@
                                 <h1 class="h4 text-gray-900 mb-4">Attach an Permission!</h1>
                             </div>
 
-                            <form class="user" method="POST" action="{{ route('admin.role.attach',$role->id) }}">
+                            <form class="user" method="post" action="{{ route('admin.role.attach',$role->id) }}">
                                 @csrf
 
-                                @method('patch')
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
 
-                                        <select name="" class="form-select" aria-label="Default select example">
-                                            <option selected>Choose Permission Please </option>
+                                        <select name="id" class="form-select" aria-label="Default select example">
+                                            <option selected>Choose Permission Name Please </option>
                                             @foreach($permissions as $permission)
-                                                <option value="{{ $permission['id'] }}">{{ $permission->name }}</option>
+                                                <option value=" {{ $permission->id }} "> {{ $permission->name }} </option>
                                             @endforeach
                                         </select>
                                     </div>

@@ -21,6 +21,7 @@
                             <th>Slug</th>
                             <th>Action</th>
                             <th>action</th>
+                            <th>permissions</th>
                         </tr>
                         </thead>
                         <tfoot>
@@ -30,6 +31,7 @@
                             <th>Slug</th>
                             <th>action</th>
                             <th>action</th>
+                            <th>permissions</th>
                         </tr>
                         </tfoot>
                         <tbody>
@@ -38,14 +40,15 @@
                                 <td>{{ $role['id'] }}</td>
                                 <td>{{ $role['name'] }}</td>
                                 <td>{{ $role['slug'] }}</td>
-                                <th>
+                                <td>
                                     <a href="{{ route('admin.role.modify',['id' => $role->id]) }}" class="btn btn-primary">Attach</a>
                                     <a href="#" class="btn btn-danger">Detach</a>
-                                </th>
-                                <th>
+                                </td>
+                                <td>
                                     <a href="{{ route('admin.role.edit',['id' => $role->id ])  }}" class="btn btn-primary">Edit</a>
                                     <a href="{{ route('admin.role.destroy',['id' => $role->id ])  }}" class="btn btn-danger">Delete</a>
-                                </th>
+                                </td>
+                                <td>permissions</td>
                             </tr>
                         @endforeach
                         </tbody>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AttachRoleRequest;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Http\Requests\StoreRoleRequest;
@@ -110,7 +111,11 @@ class RoleController extends Controller
         $role = Role::query()->where('id',$id)->get()->first();
         return view('pages.admin-panel.promote_role_permission',['role' => $role ,'permissions' => $permissions]);
     }
-    public function attach($id){
-        $role = Role::query()->where('id',$id);
+    public function attach($id,AttachRoleRequest $request){
+
+      $permissionId = $request['id'];
+      $role = Role::query()->findOrFail($id);
+      $role->permissions()->attach($permissionId);
+      return to_route('admin.dashboard');
     }
 }
