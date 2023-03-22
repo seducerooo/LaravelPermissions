@@ -13,7 +13,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
                         <thead>
                         <tr>
                             <th>Id</th>
@@ -42,13 +42,15 @@
                                 <td>{{ $role['slug'] }}</td>
                                 <td>
                                     <a href="{{ route('admin.role.modify',['id' => $role->id]) }}" class="btn btn-primary">Attach</a>
-                                    <a href="#" class="btn btn-danger">Detach</a>
+                                    <a href="{{ route('admin.role.modify',['id' => $role->id]) }}" class="btn btn-danger">Detach</a>
                                 </td>
                                 <td>
                                     <a href="{{ route('admin.role.edit',['id' => $role->id ])  }}" class="btn btn-primary">Edit</a>
                                     <a href="{{ route('admin.role.destroy',['id' => $role->id ])  }}" class="btn btn-danger">Delete</a>
                                 </td>
-                                <td>permissions</td>
+                                @foreach($role->permissions as $role_permissions)
+                                <td>{{ $role_permissions['name'] }}</td>
+                                @endforeach
                             </tr>
                         @endforeach
                         </tbody>

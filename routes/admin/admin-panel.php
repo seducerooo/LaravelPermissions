@@ -31,7 +31,9 @@ Route::patch('/roles/{id}/update',[RoleController::class,'update'])->name('admin
 Route::get('/role/{id}/delete', [RoleController::class,'destroy'])->name('admin.role.destroy');
 
 Route::get('role/{id}/modify',[RoleController::class,'modify'])->name('admin.role.modify');
+Route::get('role/{id}/dmodify',[RoleController::class,'dmodify'])->name('admin.role.dmodify');
 Route::post('role/{id}/attach',[RoleController::class,'attach'])->name('admin.role.attach');
+Route::post('role/{id}/detach',[RoleController::class,'detach'])->name('admin.role.attach');
 
                                                  /*       */
                                               /*  permissions */

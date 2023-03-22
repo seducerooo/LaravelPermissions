@@ -111,11 +111,22 @@ class RoleController extends Controller
         $role = Role::query()->where('id',$id)->get()->first();
         return view('pages.admin-panel.promote_role_permission',['role' => $role ,'permissions' => $permissions]);
     }
+    public function dmodify($id){
+        $permissions =  Permission::query()->get()->all();
+        $role = Role::query()->where('id',$id)->get()->first();
+        return view('pages.admin-panel.demote_role_permission',['role' => $role ,'permissions' => $permissions]);
+    }
     public function attach($id,AttachRoleRequest $request){
 
       $permissionId = $request['id'];
       $role = Role::query()->findOrFail($id);
       $role->permissions()->attach($permissionId);
       return to_route('admin.dashboard');
+    }
+    public function detach($id,AttachRoleRequest $request){
+        $permissionId =  $request['id'];
+        $role =  Role::query()->findOrFail($id);
+        $role->permissions()->detach($permissionId);
+        return to_route('admin.dashboard');
     }
 }
