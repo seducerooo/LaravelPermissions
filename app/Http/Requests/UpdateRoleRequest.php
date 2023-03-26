@@ -27,7 +27,6 @@ class UpdateRoleRequest extends FormRequest
             //
             'name' => 'required',
             'slug' => 'required',
-            'role_id' => 'required'
         ];
     }
 }

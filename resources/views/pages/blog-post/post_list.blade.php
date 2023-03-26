@@ -43,8 +43,8 @@
                                 <td>{{ $post['created_at'] }}</td>
                                 <td>{{ $post['updated_at'] }}</td>
                                 <th>
-                                    <a href="{{ route('admin.post.edit',['id' => $post->id ])  }}" class="btn btn-primary">Edit</a>
-                                    <a href="{{ route('admin.post.destroy',['id' => $post->id ])  }}" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('admin.post.edit',['post' => $post->id ])  }}" class="btn btn-primary">Edit</a>
+                                    <a href="{{ route('admin.post.destroy',['post' => $post->id ])  }}" class="btn btn-danger">Delete</a>
                                 </th>
 
                             </tr>

@@ -82,16 +82,15 @@ class PermissionController extends Controller
      * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function update($id,UpdatePermissionRequest $request)
+    public function update(Permission $permission,UpdatePermissionRequest $request)
     {
         //
 
-        $pUpdate = Permission::find($id);
+        $permission->update([
+            'name' => $request['name'],
+            'slug' => $request['slug']
+        ]);
 
-        $pUpdate->name = $request['name'];
-        $pUpdate->slug = $request['slug'];
-
-        $pUpdate->save();
         return to_route('admin.dashboard');
 
     }
@@ -102,10 +101,9 @@ class PermissionController extends Controller
      * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Permission $permission)
     {
         //
-        $permission = Permission::findOrFail($id);
         $permission->delete();
         return  to_route('admin.dashboard');
     }

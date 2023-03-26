@@ -45,8 +45,8 @@
                                     <a href="{{ route('admin.role.modify',['id' => $role->id]) }}" class="btn btn-danger">Detach</a>
                                 </td>
                                 <td>
-                                    <a href="{{ route('admin.role.edit',['id' => $role->id ])  }}" class="btn btn-primary">Edit</a>
-                                    <a href="{{ route('admin.role.destroy',['id' => $role->id ])  }}" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('admin.role.edit',['role' => $role->id ])  }}" class="btn btn-primary">Edit</a>
+                                    <a href="{{ route('admin.role.destroy',['role' => $role->id ])  }}" class="btn btn-danger">Delete</a>
                                 </td>
                                 @foreach($role->permissions as $role_permissions)
                                 <td>{{ $role_permissions['name'] }}</td>

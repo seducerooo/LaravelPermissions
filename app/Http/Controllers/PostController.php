@@ -31,7 +31,7 @@ class PostController extends Controller
     {
         //
   // dd($data = session()->all());
- $user_id = session()->get('loginId');
+        $user_id = session()->get('loginId');
         Post::query()->create([
 
             'user_id' =>  $user_id,
@@ -49,31 +49,31 @@ class PostController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit(Post $post)
     {
         //
-        $post =  Post::query()->where('id',$id)->get()->first();
+
         return view('pages.blog-post.update_post',compact('post'));
     }
 
 
-    public function update($id,UpdatePostRequest $request,)
+    public function update(UpdatePostRequest $request,Post $post)
     {
         //
-        $pUpdate = Post::find($id);
+        // $this->authorize('update',$post);
+        $post->update([
+            'title' => $request['title'],
+            'content' => $request['content']
+        ]);
 
-        $pUpdate->title = $request['title'];
-        $pUpdate->content = $request['content'];
 
-        $pUpdate->save();
         return to_route('admin.dashboard');
 
     }
 
-    public function destroy($id)
+    public function destroy(Post $post)
     {
         //
-        $post = Post::findOrFail($id);
         $post->delete();
         return  to_route('admin.dashboard');
     }

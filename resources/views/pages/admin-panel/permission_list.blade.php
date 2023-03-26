@@ -43,8 +43,8 @@
                                 <td>{{ $permission['created_at'] }}</td>
                                 <td>{{ $permission['updated_at'] }}</td>
                                 <th>
-                                    <a href="{{ route('admin.permission.edit',['id' => $permission->id ])  }}" class="btn btn-primary">Edit</a>
-                                    <a href="{{ route('admin.permission.destroy',['id' => $permission->id ])  }}" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('admin.permission.edit',['permission' => $permission->id ])  }}" class="btn btn-primary">Edit</a>
+                                    <a href="{{ route('admin.permission.destroy',['permission' => $permission->id ])  }}" class="btn btn-danger">Delete</a>
                                 </th>
 
                             </tr>

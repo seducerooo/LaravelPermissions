@@ -17,6 +17,7 @@ class User extends Model
                                         /*                  */
     protected $fillable =
         [
+            'role_id',
             'name',
             'email',
             'password',

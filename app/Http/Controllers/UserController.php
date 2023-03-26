@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AttachRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use App\Models\Role;
 use App\Models\User;
@@ -78,6 +79,7 @@ class UserController extends Controller
         //
         $roles =  Role::query()->get()->all();
         $user =  User::query()->where('id',$id)->get()->first();
+
         return view('pages.admin-panel.update_user',['user' => $user,'roles' => $roles]);
     }
 
@@ -88,28 +90,20 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request,$id)
+    public function update(User $user,UpdateUserRequest $request)
     {
         //
-        $user = User::query()->findOrFail($id);
-        $user->role_id = $request['role_id'];
-        $user->name = $request['name'];
-        $user->email = $request['email'];
-        $user->password = $request['password'];
-        $user->save();
+        $user->update([
+            'role_id' => $request['role_id'],
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password'])
+        ]);
+
+
         return to_route('admin.dashboard');
      }
-     public function uprole(UpdateRoleRequest $request,$id){
 
-         $user = User::query()->findOrFail($id);
-         User::query()->findOrFail($id);
-         $user->update([
-             'role_id'=> $request['role_id'],
-             ]);
-
-//         this gives a new user the the role_id 2 in table role_user.
-        return to_route('admin.dashboard');
-     }
 
     /**
      * Remove the specified resource from storage.
@@ -117,29 +111,12 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
-        $user = User::query()->findOrFail($id);
         $user->delete();
-        $user->save();
         return to_route('admin.dashboard');
     }
 
-    public function modify($id){
-        $user = User::query()->where('id',$id)->get()->first();
-        $roles = Role::query()->get()->all();
-        return view('pages.admin-panel.promote_user',['user' =>  $user,'roles' =>$roles]);
-    }
-    public function attach($id){
-        $user = User::find($id);
-        $user->roles()->attach($id);
-        return to_route('admin.dashboard');
-    }
-    public function detach($id){
-        $user = User::query()->findOrFail($id);
-        $role_id = Role::query()->where('id',$id);
-        $user->roles()->detach($role_id);
-        return to_route('admin.dashboard');
-    }
+
+
 }

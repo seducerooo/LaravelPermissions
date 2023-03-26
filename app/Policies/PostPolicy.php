@@ -19,6 +19,7 @@ class PostPolicy
     public function viewAny(User $user)
     {
         //
+
     }
 
     /**
@@ -31,6 +32,7 @@ class PostPolicy
     public function view(User $user, Post $post)
     {
         //
+
     }
 
     /**
@@ -51,9 +53,10 @@ class PostPolicy
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Post $post)
+    public function update(User $user, Post $post,int $id)
     {
         //
+
     }
 
     /**

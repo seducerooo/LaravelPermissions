@@ -7,7 +7,7 @@ use App\Models\Permission;
 use App\Models\Role;
 use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
-use App\Models\User;
+
 
 class RoleController extends Controller
 {
@@ -16,6 +16,7 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         //
@@ -83,13 +84,13 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRoleRequest $request,$id)
+    public function update(Role $role,UpdateRoleRequest $request)
     {
         //
-        $rupdate =  Role::query()->findOrFail($id);
-        $rupdate->name = $request['name'];
-        $rupdate->slug = $request['slug'];
-        $rupdate->save();
+        $role->update([
+            'name' => $request['name'],
+            'slug' => $request['slug']
+        ]);
         return to_route('admin.dashboard');
     }
 
@@ -99,10 +100,9 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
         //
-        $role = Role::findOrFail($id);
         $role->delete();
         return to_route('admin.dashboard');
     }

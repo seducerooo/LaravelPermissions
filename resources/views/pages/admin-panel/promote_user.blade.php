@@ -20,7 +20,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
 
-                                        <select name="" class="form-select" aria-label="Default select example">
+                                        <select name="id" class="form-select" aria-label="Default select example">
                                             <option selected>Choose Role Please </option>
                                             @foreach($roles as $role)
                                             <option value="{{ $role['id'] }}">{{ $role->name }}</option>
