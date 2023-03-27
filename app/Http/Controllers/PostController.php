@@ -20,9 +20,11 @@ class PostController extends Controller
         return view('pages.blog-post.post_list',compact('posts'));
     }
 
-    public function create()
+    public function create(User $user)
     {
         //
+dd($user->toArray());
+        $this->authorize('create',session()->get('loginId'));
         return view('pages.admin-panel.create_post');
     }
 

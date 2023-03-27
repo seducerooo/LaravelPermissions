@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     use HasFactory;
+    public const Is_User = 1;
+    public const Is_Admin = 2;
+    public const Is_Editor = 4;
+    public const Is_Support = 5;
                                                        /*               */
                                                     /* role security table */
                                                        /*               */

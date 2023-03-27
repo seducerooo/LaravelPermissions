@@ -14,7 +14,7 @@
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
                             <form class="user" method="POST" action="{{ route('admin.post.store') }}">
-                                @csrf
+{{--                                @csrf--}}
                                 <div class="form-group ">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <label for="id" class="form-label">Enter Your Title</label>

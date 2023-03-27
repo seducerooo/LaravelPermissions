@@ -51,7 +51,7 @@ Route::patch('/permissions/{permission}/update','update')->name('admin.permissio
                                                  /*  posts */
                                                      /* */
 Route::controller(PostController::class)->group(function () {
-    Route::get('/post','create')->name('admin.post.create');
+    Route::post('/post','create')->name('admin.post.create');
     Route::post('/post','store')->name('admin.post.store');
     Route::get('/posts','index')->name('admin.post.list');
     Route::get('/posts/{post}/edit','edit')->name('admin.post.edit');

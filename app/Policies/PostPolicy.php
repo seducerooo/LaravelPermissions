@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Post;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -44,6 +45,8 @@ class PostPolicy
     public function create(User $user)
     {
         //
+//         return false; //($user->role_id);
+        return  $user->role_id == Role::Is_Admin;
     }
 
     /**
